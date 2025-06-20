@@ -5,6 +5,7 @@ import './App.css'
 
 import Topbar from './components/topbar/Topbar'
 import HomeScreen from './components/homescreen/HomeScreen'
+import GameScreen from './components/gamescreen/GameScreen'
 import BottomInfo from './components/bottominfo/BottomInfo'
 
 import {enableAudio} from './utils/soundPlayer'
@@ -44,6 +45,7 @@ function App() {
 
         {/* game states, put component on screen based on state of game */}
         {gameState === "home" && <HomeScreen setGameState={setGameState} lightmode={lightmode} difficulty={difficulty} setDifficulty={setDifficulty} />}
+        {gameState === "game" && <GameScreen difficulty={difficulty} setGameState={setGameState} />}
 
         <BottomInfo />
       </div>

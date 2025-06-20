@@ -1,0 +1,66 @@
+.mainContainer {
+    justify-content: center;
+}
+
+.gameContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* invisible input container, enough for collecting keystrokes */
+.gameContainer .gameInput {
+    position: absolute;
+    opacity: 0;
+    pointer-events:none;
+    width: 1px;
+    height: 1px;
+}
+
+.gameDisplay {
+    color: var(--textcolor);
+    text-align: center;
+    font-size: 60px;
+    letter-spacing: 1px;
+    user-select: none;
+    width: 30vw;
+}
+
+.gameDisplay .gameLetter {
+    opacity: 0.4;
+    transition: opacity 0.1s linear;
+}
+
+.gameDisplay .gameLetter.matched {
+    opacity: 1;
+}
+
+.gameDisplay .gameLetter.next{
+    padding-bottom: 3px;
+    border-bottom: 3px solid var(--textcolor);
+    opacity: 0.55;
+}
+
+/* timer */
+
+.gameContent .gameTimer {
+    height:5px;
+    margin-top: 10px;
+    box-shadow: 0 4px 4px var(--shadowcolor);
+    border-radius: 20px;
+}
+
+/* responsive */
+
+@media only screen and (max-width: 768px) {
+    .gameDisplay {
+        font-size: 35px;
+        width:40vw;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .gameDisplay {
+        font-size: 30px;
+    }
+}

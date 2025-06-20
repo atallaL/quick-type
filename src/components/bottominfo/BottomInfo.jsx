@@ -1,7 +1,5 @@
 import './BottomInfo.css'
 
-import {Link} from 'react-router-dom'
-
 export default function BottomInfo() {
     return (
         <div className="bottomInfoContainer">

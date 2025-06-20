@@ -37,9 +37,11 @@
     }
 
     .bottomInfoContainer{
-        display:flex;
-        position: relative;
-        align-items:center;
+        top:0;
+    }
+
+    .bottomInfoContainer .bottomInfoText{
+        margin: 5px 0 0 12px;
     }
 
 }

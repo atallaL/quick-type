@@ -6,6 +6,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css'
 
 //sound effects
 import selectSFX from '../../soundeffect/select.ogg'
+import startSFX from '../../soundeffect/start.ogg'
 import {playAudio} from '../../utils/soundPlayer'
 
 export default function HomeScreen({setGameState, lightmode, difficulty, setDifficulty}) {
@@ -18,6 +19,12 @@ export default function HomeScreen({setGameState, lightmode, difficulty, setDiff
         //play audio
         playAudio(selectSFX);
     }
+
+    const handleGameStateSwitch = () => {
+        //play audio
+        playAudio(startSFX);
+        setGameState('game');
+    }
     
     return (
         <div className="homeContainer">
@@ -26,7 +33,7 @@ export default function HomeScreen({setGameState, lightmode, difficulty, setDiff
                     <img src={lightmode ? logo : logoDark} />
                 </div>
                 <div className="homeStart">
-                    <div className="startButton">
+                    <div className="startButton" onClick={() => handleGameStateSwitch()}>
                         <h2>start</h2>
                         <i className="bi bi-caret-right-fill"></i>
                     </div>
