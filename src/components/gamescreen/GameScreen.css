@@ -37,7 +37,8 @@
 
 .gameDisplay .gameLetter.next{
     padding-bottom: 3px;
-    border-bottom: 3px solid var(--textcolor);
+    border-bottom: 2px solid var(--textcolor);
+    border-radius: 5px;
     opacity: 0.55;
 }
 

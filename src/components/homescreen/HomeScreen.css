@@ -148,3 +148,45 @@
     box-shadow: 0 4px 4px var(--shadowcolor);
     opacity: 1;
 }
+
+/* responsive */
+
+@media only screen and (max-width: 768px) {
+    .homeContainer .logoContainer img{
+        width: 160px;
+    }   
+
+    .homeContainer .homeStart h2{
+        font-size: 25px;
+        text-shadow: 0 2px 3px var(--shadowcolor);
+    }
+
+    .homeContainer .homeStart i{
+        font-size: 20px;
+    }
+
+    .homeContainer .homeHow p {
+        font-size: 13px;
+    }
+
+    .homeContainer .homeStart .startButton {
+        margin-left: 12px;
+    }
+
+    .mainContainer .homeContainer {
+        margin-top:30vh;
+        height:70vh;
+    }
+
+    .homeContainer .difficultyOption {
+        color: var(--textcolor);
+        font-size: 15px;
+        font-weight:100;
+        padding: 10px 20px;
+        margin: 0 5px 10px 5px;
+        cursor: pointer;
+        border-radius: 5px;
+        opacity: 0.6;
+        transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+    }
+}
