@@ -17,6 +17,7 @@
     height: 1px;
 }
 
+/* actual word display */
 .gameDisplay {
     color: var(--textcolor);
     text-align: center;
@@ -27,6 +28,7 @@
 }
 
 .gameDisplay .gameLetter {
+    display: inline-block;
     opacity: 0.4;
     text-shadow: 0 2px 1px var(--shadowcolor);
     transition: opacity 0.1s linear, text-shadow 0.08s linear;
@@ -37,20 +39,81 @@
     opacity: 1;
 }
 
-.gameDisplay .gameLetter.next{
+.gameDisplay .gameLetter.next {
     padding-bottom: 3px;
     border-bottom: 2px solid var(--textcolor);
     border-radius: 5px;
     opacity: 0.55;
 }
 
-/* timer */
+.gameDisplay .gameLetter.wrong {
+    animation: wrongFlash 0.15s ease-out;
+    will-change: transform;
+}
 
-.gameContent .gameTimer {
+@keyframes wrongFlash {
+    0% {
+        color: red;
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-2px);
+    }
+    75% {
+        transform: translateX(2px);
+    }
+    100% {
+        transform: translateX(0);
+        color: inherit
+    }
+}
+
+/* timer and lil background lines in there too*/
+
+.gameContent .gameTimerContainer {
+    position: relative;
     height:5px;
     margin-top: 10px;
-    box-shadow: 0 4px 4px var(--shadowcolor);
+    width: 100%;
     border-radius: 20px;
+    background-color: var(--shadowcolor3);
+    box-shadow: 0 4px 4px var(--shadowcolor2);
+    overflow: hidden;
+}
+
+.gameContent .gameTimer {
+    position: relative;
+    overflow: hidden;
+    height:100%;
+    width: 100%;
+    border-radius: 20px;
+    z-index: 1;
+}
+
+.gameContent .gameTimer::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    background-image: repeating-linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0.1) 0px,
+        rgba(255,255,255,0.1) 15px,
+        transparent 10px,
+        transparent 30px
+    );
+    background-size: 30px 30px;
+    background-repeat: repeat;
+    animation: timerLineShift 2s linear infinite;
+    z-index: 2;
+    pointer-events: none;
+}
+
+@keyframes timerLineShift {
+    0% {transform: translateX(0)}
+    100% {transform: translateX(-30px)}
 }
 
 /* lil text above timer */

@@ -6,6 +6,7 @@ import './App.css'
 import Topbar from './components/topbar/Topbar'
 import HomeScreen from './components/homescreen/HomeScreen'
 import GameScreen from './components/gamescreen/GameScreen'
+import EndScreen from './components/endscreen/EndScreen'
 import BottomInfo from './components/bottominfo/BottomInfo'
 
 import {enableAudio} from './utils/soundPlayer'
@@ -18,6 +19,9 @@ function App() {
 
   const [gameState, setGameState] = useState("home");
   const [difficulty, setDifficulty] = useState('easy');
+
+  //stats to pass from game to end stats component
+  const [stats, setStats] = useState(null);
 
   //state handlers
   const handleModeSwitch = () => {
@@ -45,7 +49,8 @@ function App() {
 
         {/* game states, put component on screen based on state of game */}
         {gameState === "home" && <HomeScreen setGameState={setGameState} lightmode={lightmode} difficulty={difficulty} setDifficulty={setDifficulty} />}
-        {gameState === "game" && <GameScreen difficulty={difficulty} setGameState={setGameState} />}
+        {gameState === "game" && <GameScreen difficulty={difficulty} setGameState={setGameState} setStats={setStats}/>}
+        {gameState === "end" && <EndScreen setGameState={setGameState} stats={stats}/>}
 
         <BottomInfo />
       </div>

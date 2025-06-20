@@ -5,7 +5,7 @@ import typeCorrect from '../../soundeffect/typeCorrect.ogg'
 import typeIncorrect from '../../soundeffect/typeIncorrect.ogg'
 import {playAudio} from '../../utils/soundPlayer'
 
-export default function GameScreen({difficulty, setGameState}) {
+export default function GameScreen({difficulty, setGameState, setStats}) {
 
     //states
     const [currWord, setCurrWord] = useState('');
@@ -14,9 +14,18 @@ export default function GameScreen({difficulty, setGameState}) {
     const [hasStarted, setHasStarted] = useState(false); //tracks initial user input
     const [time, setTime] = useState(100); //percent, will be used to display timer
     const [timerReset, setTimerReset] = useState(false); //allow color to not transition when the timer resets
+    const [wrongInput, setWrongInput] = useState(false);
 
     const inputRef = useRef(null);
     const timeRef = useRef(Date.now()); //to allow incorrect letter input to takeaway time
+
+    //stats of this run of game, pass this info to stat page at the end
+    const [gameStats, setGameStats] = useState({
+        wordsCompleted: 10,
+        timeFirstInputSum: 0,
+        timeElapsed: 0,
+    });
+
 
     //get a random word
     const getRandomWord = () => {
@@ -43,6 +52,11 @@ export default function GameScreen({difficulty, setGameState}) {
         if (!match) {
             playAudio(typeIncorrect);
             timeRef.current -= 100;
+
+            //make the wrong thingy happen
+            setWrongInput(true);
+            setTimeout(() => setWrongInput(false), 150);
+
             return;
         }
 
@@ -91,8 +105,8 @@ export default function GameScreen({difficulty, setGameState}) {
         if (!hasStarted) {return} //don't let timer start until initial keystroke
 
         const base = 4000;
-        const decrease = difficulty === 'hard' ? 75 : 100;
-        const min = 1500;
+        const decrease = difficulty === 'hard' ? 75 : 100; //decrease time slower on hard mode
+        const min = difficulty == 'hard' ? 1800 : 1500; //minimum time higher on hard mode 
         const timeLimit = Math.max(min, base - wordCount*decrease);
 
         const interval = setInterval(() => {
@@ -103,7 +117,8 @@ export default function GameScreen({difficulty, setGameState}) {
             //if we go below time, do something
             if (percent <= 0) {
                 clearInterval(interval);
-                setGameState('home');
+                setStats(gameStats);
+                setGameState('end');
             }
         }, 50);
         
@@ -176,7 +191,7 @@ export default function GameScreen({difficulty, setGameState}) {
                     {/* split the word into characters so i can check if theyve matched seperately and style accordingly */}
 
                     {currWord.split('').map((c, i) => (
-                        <span key={i} className={`gameLetter ${i < inputText.length ? 'matched' : ''} ${i === inputText.length ? 'next' : ''}`}>
+                        <span key={i} className={`gameLetter ${i < inputText.length ? 'matched' : ''} ${i === inputText.length ? 'next' : ''} ${i === inputText.length && wrongInput ? 'wrong' : ''}`}>
                             {c}
                         </span>
                     ))}
@@ -187,11 +202,14 @@ export default function GameScreen({difficulty, setGameState}) {
                     <div className={`gameWordCount ${hasStarted ? '' : 'beforeStart'}`}>{hasStarted ? wordCount : 'press any key to start'}</div>
                 </div>
                 
-                <div className="gameTimer" style={{
+                <div className="gameTimerContainer">
+                    <div className="gameTimer" style={{
                         width: `${time}%`,
                         transition: timerReset ? 'none' : 'width 50ms linear, background-color 0.4s linear', //50ms for interval time
                         backgroundColor: time > 45 ? 'var(--accentcolor)' : 'red' //once we're 45% of the way done the time, begin changing the background color to red
-                    }}></div>
+                    }}>
+                    </div>
+                </div>
 
                 {/* where the user actually inputs */}
                 <input
