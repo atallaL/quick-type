@@ -1,0 +1,122 @@
+/* structure and logo */
+
+.homeContainer h1{
+  font-size: 60px;
+  margin: 0;
+}
+
+.mainContainer .homeContainer {
+  margin-top:25vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height:75vh;
+}
+
+.homeContainer .logoContainer{
+  animation: logoFloat 5s ease-in-out infinite;
+  transform: translateY(0);
+  will-change: transform;
+}
+
+@keyframes logoFloat {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.homeContainer .logoContainer img{
+  width: 240px;
+  pointer-events:none;
+}
+
+/* start button part */
+
+.homeContainer .homeStart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  margin-top: 50px;
+  transform: scale(1);
+}
+
+.homeContainer .homeStart h2{
+  margin-left: 19px;
+  font-size: 35px;
+  font-weight:1000;
+  margin: 0;
+  text-shadow: 0 2px 3px var(--shadowcolor);
+  transition: transform 0.4s ease;
+  will-change: transform;
+}
+
+.homeContainer .homeStart i{
+  margin: 4px 0 0 3px;
+  font-size: 25px;
+  color: var(--accentcolor);
+  display:flex;
+  align-items:center;
+  text-shadow: 0 2px 3px var(--shadowcolor);
+  transform: translateX(0) scale(0.9);
+  transition: transform 0.4s ease;
+  will-change: transform;
+}
+
+.homeContainer .homeStart .startButton {
+  display: flex;
+  flex-direction: row;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+.homeContainer .homeStart .startButton:hover h2{
+  transform: scale(1.05);
+}
+
+.homeContainer .homeStart .startButton:hover i{
+  transform: translateX(8px) scale(1);
+}
+
+/* how do i play? section */
+
+.homeContainer .homeHow {
+  box-sizing: border-box;
+}
+
+.homeContainer .homeHow p {
+  font-weight: 400;
+  font-size: 17px;
+  margin-top: 9px;
+  opacity: 0.5;
+  cursor: pointer;
+  transform: scale(1);
+  transition: transform 0.6s ease, opacity 0.6s ease;
+  will-change: transform;
+}
+
+.homeContainer .homeHow p:hover {
+  opacity: 0.6;
+  transform: scale(1.05);
+}
+
+/* difficulty selection part */
+
+.homeContainer .homeBottom {
+  display:flex;
+  flex-direction: row;
+  justify-content:center;
+  align-items: center;
+}
+
+.homeContainer .difficultySelectionContainer p {
+  font-size: 24px;
+  font-weight:1000;
+  margin: 0;
+}
