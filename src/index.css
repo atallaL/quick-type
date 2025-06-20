@@ -15,7 +15,7 @@ body.dark {
   --textcolor: #F4FFFA;
   --accentcolor: #6C7FFF;
   --shadowcolor: #cfcfcf44;
-  --shadowcolor2: #d6d6d623;
+  --shadowcolor2: #d6d6d60e;
   --bgbarcolor: rgba(255, 255, 255, 0.009);
 }
 
@@ -32,5 +32,5 @@ body {
 
 /* color gradual switch when changing modes */
 body, .mainContainer {
-  transition: background-color 0.5s ease, color 0.5s ease;
+  transition: background-color 0.6s ease, color 0.6s ease;
 }

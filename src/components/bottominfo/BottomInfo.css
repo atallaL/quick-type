@@ -1,0 +1,45 @@
+.bottomInfoContainer{
+    display:flex;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.bottomInfoContainer .bottomInfoText{
+    margin: 0 0 5px 12px;
+}
+
+.bottomInfoContainer .bottomInfoText p{
+    color: var(--textcolor);
+    margin: 0;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+}
+
+.bottomInfoContainer .bottomInfoText a{
+    text-decoration: none;
+    font-weight: 900;
+    font-family: var(--headerFont);
+    color: var(--bgColor);
+    transition: letter-spacing 0.5s ease;
+}
+
+.bottomInfoContainer .bottomInfoText a:hover {
+    text-decoration: underline;
+    letter-spacing: 1px;
+}
+
+@media only screen and (max-width: 768px) {
+    .bottomInfoContainer .bottomInfoText p{
+        color: var(--textcolor);
+        margin: 0;
+        font-size: 10px;
+    }
+
+    .bottomInfoContainer{
+        display:flex;
+        position: relative;
+        align-items:center;
+    }
+
+}

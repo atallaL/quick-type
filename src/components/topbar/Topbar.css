@@ -4,7 +4,7 @@
     align-items: center;
     position: absolute;
     top: 20px; 
-    right: 20px;
+    right: 25px;
 }
 
 .topbarElem{
@@ -26,4 +26,23 @@
 
 .topbarAudio i{
     font-size: 26px;
+}
+
+@media only screen and (max-width: 768px) {
+    .topbarElem i{
+        font-size: 18px;
+    }
+
+    .topbarAudio i{
+        font-size: 22px;
+    }
+
+    .topbarElem{
+        margin: 0 0 0 15px;
+        cursor: pointer;
+    }
+    .topbarContainer {
+        top: 15px; 
+        right: 20px;
+    }
 }

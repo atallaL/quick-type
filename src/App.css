@@ -21,7 +21,11 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  box-shadow: 0 0 10px var(--shadowcolor2);
+  box-shadow: 
+    inset 11px 0 6px -10px var(--shadowcolor),  
+    inset -12px 0 6px -10px var(--shadowcolor),
+    0 0 10px var(--shadowcolor2);
+  
 }
 
 /* slight moving background */

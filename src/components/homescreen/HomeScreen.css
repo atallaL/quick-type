@@ -9,6 +9,7 @@
   margin-top:25vh;
   display: flex;
   flex-direction: column;
+  align-items:center;
   justify-content: space-between;
   height:75vh;
 }
@@ -117,9 +118,33 @@
   align-items: center;
 }
 
-.homeContainer .homeBottom p {
+.homeContainer .difficultyContainer {
+  display:flex;
+  flex-direction: row;
+  justify-content:center;
+  align-items: center;
+}
+
+.homeContainer .difficultyOption {
   color: var(--textcolor);
-  font-size: 24px;
-  font-weight:300;
-  margin: 0 0 20px 0;
+  font-size: 25px;
+  font-weight:100;
+  padding: 10px 20px;
+  margin: 0 10px 20px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  opacity: 0.6;
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+}
+
+.homeContainer .difficultyOption:hover {
+    background-color: var(--accentcolor);
+    color: var(--bgcolor);
+}
+
+.homeContainer .difficultyOption.active {
+    background-color: var(--accentcolor);
+    color: var(--bgcolor);
+    box-shadow: 0 4px 4px var(--shadowcolor);
+    opacity: 1;
 }

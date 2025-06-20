@@ -2,29 +2,54 @@ import './HomeScreen.css'
 
 import logo from '../../assets/logo.png'
 import logoDark from '../../assets/logo_dark.png'
-import 'bootstrap-icons/font/bootstrap-icons.css';
+import 'bootstrap-icons/font/bootstrap-icons.css'
 
-export default function HomeScreen({setGameState, lightmode}) {
+//sound effects
+import selectSFX from '../../soundeffect/select.ogg'
+import {playAudio} from '../../utils/soundPlayer'
+
+export default function HomeScreen({setGameState, lightmode, difficulty, setDifficulty}) {
+    
+
+    //to allow playing sound and selecting level
+    const handleDifficultySelection = (difficultyLevel) => {
+        setDifficulty(difficultyLevel);
+
+        //play audio
+        playAudio(selectSFX);
+    }
+    
     return (
         <div className="homeContainer">
             <div className="homeCenter">
-            <div className="logoContainer">
-                <img src={lightmode ? logo : logoDark} />
-            </div>
-            <div className="homeStart">
-                <div className="startButton">
-                <h2>start</h2>
-                <i class="bi bi-caret-right-fill"></i>
+                <div className="logoContainer">
+                    <img src={lightmode ? logo : logoDark} />
                 </div>
-                <div className="homeHow">
-                <p>how do i play?</p>
+                <div className="homeStart">
+                    <div className="startButton">
+                        <h2>start</h2>
+                        <i className="bi bi-caret-right-fill"></i>
+                    </div>
+                    <div className="homeHow">
+                        <p>how do i play?</p>
+                    </div>
                 </div>
-            </div>
             </div>
             <div className="homeBottom">
-            <div className="difficultySelection">
-                <p>hi</p>
-            </div>
+                <div className="difficultyContainer">
+                    <div 
+                        className={`difficultyOption ${difficulty === 'easy' ? 'active' : ''}`}
+                        onClick={() => handleDifficultySelection('easy')}    
+                    >easy</div>
+                    <div 
+                        className={`difficultyOption ${difficulty === 'medium' ? 'active' : ''}`}
+                        onClick={() => handleDifficultySelection('medium')}    
+                    >medium</div>
+                    <div 
+                        className={`difficultyOption ${difficulty === 'hard' ? 'active' : ''}`}
+                        onClick={() => handleDifficultySelection('hard')}    
+                    >hard</div>
+                </div>
             </div>
 
         </div>

@@ -9,7 +9,7 @@ export default function Topbar({lightmode, switchMode, audioEnabled, toggleAudio
                 <i className={`bi ${lightmode ? 'bi-moon-fill' : 'bi-sun-fill'}`}></i>
             </div>
             <div className="topbarElem topbarAudio" onClick={toggleAudio}>
-                <i class={`bi ${audioEnabled ? 'bi-volume-up-fill' : 'bi-volume-mute-fill'}`}></i>
+                <i className={`bi ${audioEnabled ? 'bi-volume-up-fill' : 'bi-volume-mute-fill'}`}></i>
             </div>
         </div>
     );
