@@ -1,14 +1,134 @@
+@keyframes endFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
 .endContainer {
     height: 100%;
+    margin-top: 5vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top:17vh;
+    justify-content: center;
+}
+
+.endContainer .endText {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    animation: endFadeIn 3s ease forwards 1s;
 }
 
 .endContainer .endHeader h2{
     color: var(--accentcolor);
     font-weight: 600;
     font-size: 60px;
-    text-shadow: 0 4px 3px var(--shadowcolor);
+    text-shadow: 0 3px 3px var(--shadowcolor);
+    margin-top: 0;
+}
+
+.endContainer .endStats{
+    color: var(--textcolor);
+    text-align: center;
+}
+
+.endContainer .endStats h3{
+    font-size: 30px;
+    text-shadow: 0 2px 2px var(--shadowcolor);
+    font-weight:500;
+    margin: 0;
+    margin-bottom: 15px;
+}
+
+.endContainer .endStats p{
+    margin: 0;
+    margin-bottom:8px;
+}
+
+.endContainer .endButtons {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    gap: 20px;
+    opacity: 0;
+    margin-top:10vh;
+    pointer-events: all;
+    animation: endFadeIn 3s ease forwards 2s;
+}
+
+.endContainer .endButtons.hiding {
+    pointer-events: none;
+}
+
+.endContainer .endButton {
+    font-size: 25px;
+    font-weight: 700;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.endContainer .endButton p{
+    margin: 0;
+    transition: color 0.3s ease;
+}
+
+.endContainer .endButton.endHome{
+    background-color: var(--accentcolor);
+    border-radius: 5px;
+}
+
+.endContainer .endButton.endHome p{
+    color: var(--bgcolor);
+}
+
+.endContainer .endButton.endHome{
+    color: var(--bgcolor);
+    background-color: var(--accentcolor);
+    border-radius: 5px;
+    transform: scale(1);
+    opacity: 1;
+    transition: transform 0.4s ease, opacity 0.4s ease, color 0.3s ease;
+    will-change: transform;
+}
+
+.endContainer .endButton.endHome:hover{
+    transform: scale(0.95);
+    opacity: 0.7;
+}
+
+.endContainer .endButton.endRetry{
+    display:flex;
+}
+
+.endContainer .endButton.endRetry p{
+    color: var(--textcolor);
+    transform: scale(1);
+    transition: transform 0.4s ease, color 0.3s ease;
+    will-change: transform; 
+}
+
+.endContainer .endButton.endRetry:hover p{
+    transform: scale(1.06);
+}
+
+.endContainer .endButton.endRetry i{
+  margin: 4px 0 0 3px;
+  font-size: 25px;
+  color: var(--accentcolor);
+  display:flex;
+  align-items:center;
+  text-shadow: 0 2px 3px var(--shadowcolor);
+  transform: translateX(0) scale(0.9);
+  transition: transform 0.4s ease, color 0.3s ease;
+  will-change: transform;
+}
+
+.endContainer .endButton.endRetry:hover i{
+  transform: translateX(5px) scale(1);
 }
