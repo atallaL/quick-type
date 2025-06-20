@@ -11,6 +11,7 @@ export default function GameScreen({difficulty, setGameState}) {
     const [currWord, setCurrWord] = useState('');
     const [inputText, setInputText] = useState('');
     const [wordCount, setWordCount] = useState(0);
+    const [hasStarted, setHasStarted] = useState(false); //tracks initial user input
     const [time, setTime] = useState(100); //percent, will be used to display timer
     const [timerReset, setTimerReset] = useState(false); //allow color to not transition when the timer resets
 
@@ -32,13 +33,18 @@ export default function GameScreen({difficulty, setGameState}) {
         //check if the word is correct so far
         const match = currWord.startsWith(typed);
 
+        //start on first keystroke (right or wrong)
+        if (!hasStarted) {
+            setHasStarted(true);
+            timeRef.current = Date.now();
+        }
+
+        //if incorrect letter typed
         if (!match) {
             playAudio(typeIncorrect);
             timeRef.current -= 100;
             return;
         }
-
-    
 
         //if it matches, this input will be used
         setInputText(typed);
@@ -51,7 +57,7 @@ export default function GameScreen({difficulty, setGameState}) {
             setWordCount(prev => prev + 1);
             timeRef.current = Date.now(); //reset on word completion
 
-            //dont allow transition on timer for like a bit, renable after
+            //dont allow transition on timer for like a bit, reenable after
             setTimerReset(true);
             setTimeout(() => setTimerReset(false), 100);
         }
@@ -82,6 +88,8 @@ export default function GameScreen({difficulty, setGameState}) {
 
     //timer implementation
     useEffect(()=> {
+        if (!hasStarted) {return} //don't let timer start until initial keystroke
+
         const base = 4000;
         const decrease = difficulty === 'hard' ? 75 : 100;
         const min = 1500;
@@ -100,7 +108,7 @@ export default function GameScreen({difficulty, setGameState}) {
         }, 50);
         
         return () => clearInterval(interval);
-    }, [wordCount]);
+    }, [wordCount, hasStarted]);
 
 
 
@@ -174,10 +182,15 @@ export default function GameScreen({difficulty, setGameState}) {
                     ))}
                 </p>
 
+                {/* display needed text */}
+                <div className="gameWordCountContainer">
+                    <div className={`gameWordCount ${hasStarted ? '' : 'beforeStart'}`}>{hasStarted ? wordCount : 'press any key to start'}</div>
+                </div>
+                
                 <div className="gameTimer" style={{
                         width: `${time}%`,
-                        transition: timerReset ? 'none' : 'width 50ms linear, background-color 0.2s linear', //50ms for interval time
-                        backgroundColor: time > 35 ? 'var(--accentcolor)' : 'red' //once we're 50% of the way done the time, begin changing the background color to red
+                        transition: timerReset ? 'none' : 'width 50ms linear, background-color 0.4s linear', //50ms for interval time
+                        backgroundColor: time > 45 ? 'var(--accentcolor)' : 'red' //once we're 45% of the way done the time, begin changing the background color to red
                     }}></div>
 
                 {/* where the user actually inputs */}

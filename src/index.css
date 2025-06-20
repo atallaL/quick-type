@@ -6,6 +6,7 @@
   --accentcolor: #354EED;
   --shadowcolor: #09030859;
   --shadowcolor2: #09030823;
+  --shadowcolor3: #0903084b;
   --bgbarcolor: rgba(0, 0, 0, 0.015);
 }
 
@@ -16,6 +17,7 @@ body.dark {
   --accentcolor: #6C7FFF;
   --shadowcolor: #cfcfcf44;
   --shadowcolor2: #d6d6d60e;
+  --shadowcolor3: #dbdbdb28;
   --bgbarcolor: rgba(255, 255, 255, 0.009);
 }
 
