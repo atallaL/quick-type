@@ -14,7 +14,7 @@
 }
 
 .homeContainer .logoContainer{
-  animation: logoFloat 5s ease-in-out infinite;
+  animation: logoFloat 4.5s ease-in-out infinite;
   transform: translateY(0);
   will-change: transform;
 }
@@ -24,7 +24,7 @@
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-10px);
+    transform: translateY(-12px);
   }
   100% {
     transform: translateY(0);
@@ -48,6 +48,7 @@
 }
 
 .homeContainer .homeStart h2{
+  color: var(--textcolor);
   margin-left: 19px;
   font-size: 35px;
   font-weight:1000;
@@ -91,6 +92,7 @@
 }
 
 .homeContainer .homeHow p {
+  color: var(--textcolor);
   font-weight: 400;
   font-size: 17px;
   margin-top: 9px;
@@ -115,8 +117,9 @@
   align-items: center;
 }
 
-.homeContainer .difficultySelectionContainer p {
+.homeContainer .homeBottom p {
+  color: var(--textcolor);
   font-size: 24px;
-  font-weight:1000;
-  margin: 0;
+  font-weight:300;
+  margin: 0 0 20px 0;
 }

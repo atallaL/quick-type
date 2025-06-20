@@ -1,0 +1,29 @@
+.topbarContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 20px; 
+    right: 20px;
+}
+
+.topbarElem{
+    margin: 0 0 0 20px;
+    cursor: pointer;
+}
+
+.topbarElem i{
+    color: var(--textcolor);
+    font-size: 22px;
+    text-shadow: 0 2px 2px var(--shadowcolor);
+    opacity: 0.6;
+    transition: opacity 0.5s ease;
+}
+
+.topbarElem:hover i{
+    opacity:1;
+}
+
+.topbarAudio i{
+    font-size: 26px;
+}
