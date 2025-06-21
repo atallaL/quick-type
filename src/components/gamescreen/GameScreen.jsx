@@ -54,7 +54,7 @@ export default function GameScreen({difficulty, setGameState, setStats}) {
 
         //if incorrect letter typed
         if (!match) {
-            playAudio(typeIncorrect);
+            playAudio(typeIncorrect, 0.5);
             timeRef.current -= 100;
 
             //make the wrong thingy happen

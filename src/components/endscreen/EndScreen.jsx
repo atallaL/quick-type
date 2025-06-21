@@ -34,7 +34,7 @@ export default function EndScreen({setGameState, stats}) {
 
     //state switch handling
     const handleHomeSwitch = () => {
-        playAudio(backHome);
+        playAudio(backHome, 0.4);
         setGameState('home');
     }
 

@@ -29,7 +29,7 @@ export default function HomeScreen({setGameState, lightmode, difficulty, setDiff
 
     const handleHowToPlay = () => {
         //play audio
-        playAudio(openSFX);
+        playAudio(openSFX, 0.3);
     }
     
     return (
