@@ -22,11 +22,12 @@ export default function GameScreen({difficulty, setGameState, setStats}) {
     const timeRef = useRef(Date.now()); //to allow incorrect letter input to takeaway time
 
     //stats of this run of game, pass this info to stat page at the end
-    const [gameStats, setGameStats] = useState({
-        wordsCompleted: 10,
+    const gameStatsRef = useRef({
+        startTime:0,
+        wordStartTime:0,
         timeFirstInputSum: 0,
-        timeElapsed: 0,
-    });
+        firstInput:false,
+    })
 
 
     //get a random word
@@ -48,6 +49,7 @@ export default function GameScreen({difficulty, setGameState, setStats}) {
         if (!hasStarted) {
             setHasStarted(true);
             timeRef.current = Date.now();
+            gameStatsRef.current.startTime = Date.now();
         }
 
         //if incorrect letter typed
@@ -62,6 +64,15 @@ export default function GameScreen({difficulty, setGameState, setStats}) {
             return;
         }
 
+        //get the time between word showing up and first letter being typed, add it to sum
+        if (!gameStatsRef.current.firstInput) {
+            if (!(wordCount === 0)) {
+                const reactionTime = Date.now()-gameStatsRef.current.wordStartTime;
+                gameStatsRef.current.timeFirstInputSum = gameStatsRef.current.timeFirstInputSum + reactionTime;
+                gameStatsRef.current.firstInput = true;
+            }
+        }
+
         //if it matches, this input will be used
         setInputText(typed);
         playAudio(typeCorrect); //play audio unless the whole word is typed
@@ -74,6 +85,10 @@ export default function GameScreen({difficulty, setGameState, setStats}) {
             setWordCount(prev => prev + 1);
             timeRef.current = Date.now(); //reset on word completion
 
+            //for reaction time tracking
+            gameStatsRef.current.wordStartTime = Date.now();
+            gameStatsRef.current.firstInput = false;
+
             //dont allow transition on timer for like a bit, reenable after
             setTimerReset(true);
             setTimeout(() => setTimerReset(false), 100);
@@ -84,6 +99,7 @@ export default function GameScreen({difficulty, setGameState, setStats}) {
     useEffect(() => {
         setCurrWord(getRandomWord);
         timeRef.current = Date.now();
+        gameStatsRef.current.wordStartTime = Date.now();
     }, []);
 
     //make sure users cant click off by keeping the input thing highlighted
@@ -121,7 +137,16 @@ export default function GameScreen({difficulty, setGameState, setStats}) {
             if (percent <= 0) {
                 playAudio(died, 0.2);
                 clearInterval(interval);
-                setStats(gameStats);
+
+                //stat handling
+                const elapsedTime = Math.floor((Date.now() - gameStatsRef.current.startTime) / 1000);
+
+                setStats({
+                    wordsCompleted: wordCount,
+                    timeFirstInputSum: gameStatsRef.current.timeFirstInputSum,
+                    timeElapsed: elapsedTime,
+                })
+
                 setGameState('end');
             }
         }, 50);

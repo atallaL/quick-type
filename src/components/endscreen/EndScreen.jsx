@@ -11,7 +11,7 @@ import {playAudio} from '../../utils/soundPlayer'
 export default function EndScreen({setGameState, stats}) {
 
     //choose a random word from this list to display
-    const endWordList = ['great job!', 'incredible!', 'well done!', 'impressive!', 'amazing!', 'fantastic!']
+    const endWordList = ['great job!', 'incredible!', 'well done!', 'impressive!', 'amazing!', 'fantastic!', 'super!', 'awesome!', 'unreal!', 'good stuff!', 'nailed it!', 'awesome sauce!', 'mindblowing!', 'so quick!']
     const [endWord, setEndWord] = useState('');
     useEffect(() => {
         setEndWord(endWordList[Math.floor(Math.random() * endWordList.length)]);
@@ -53,7 +53,7 @@ export default function EndScreen({setGameState, stats}) {
                 <div className="endStats">
                     <h3>stats:</h3>
                     <p>total time elapsed: {stats.timeElapsed}s</p>
-                    <p>average reaction time: {stats.wordsCompleted === 0 ? 'N/A' : Math.floor(stats.timeFirstInputSum / stats.wordsCompleted)}</p>
+                    <p>average reaction time: {stats.wordsCompleted === 0 ? 'N/A' : Math.floor(stats.timeFirstInputSum / (stats.wordsCompleted - 1)) + 'ms'}</p>
                     <p>total words typed: {stats.wordsCompleted}</p>
                 </div>
             </div>

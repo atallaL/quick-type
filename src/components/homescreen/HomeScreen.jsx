@@ -7,6 +7,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css'
 //sound effects
 import selectSFX from '../../soundeffect/select.ogg'
 import startSFX from '../../soundeffect/start.ogg'
+import clickSFX from '../../soundeffect/keyclick.wav'
 import {playAudio} from '../../utils/soundPlayer'
 
 export default function HomeScreen({setGameState, lightmode, difficulty, setDifficulty}) {
@@ -17,13 +18,18 @@ export default function HomeScreen({setGameState, lightmode, difficulty, setDiff
         setDifficulty(difficultyLevel);
 
         //play audio
-        playAudio(selectSFX);
+        playAudio(clickSFX, 0.3);
     }
 
     const handleGameStateSwitch = () => {
         //play audio
         playAudio(startSFX, 0.3);
         setGameState('game');
+    }
+
+    const handleHowToPlay = () => {
+        //play audio
+        playAudio(selectSFX);
     }
     
     return (
@@ -38,7 +44,7 @@ export default function HomeScreen({setGameState, lightmode, difficulty, setDiff
                         <i className="bi bi-caret-right-fill"></i>
                     </div>
                     <div className="homeHow">
-                        <p className="">how do i play?</p>
+                        <p onClick={handleHowToPlay}>how do i play?</p>
                     </div>
                 </div>
             </div>

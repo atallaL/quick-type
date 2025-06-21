@@ -118,17 +118,48 @@
 }
 
 .endContainer .endButton.endRetry i{
-  margin: 4px 0 0 3px;
-  font-size: 25px;
-  color: var(--accentcolor);
-  display:flex;
-  align-items:center;
-  text-shadow: 0 2px 3px var(--shadowcolor);
-  transform: translateX(0) scale(0.9);
-  transition: transform 0.4s ease, color 0.3s ease;
-  will-change: transform;
+    margin: 4px 0 0 3px;
+    font-size: 25px;
+    color: var(--accentcolor);
+    display:flex;
+    align-items:center;
+    text-shadow: 0 2px 3px var(--shadowcolor);
+    transform: translateX(0) scale(0.9);
+    transition: transform 0.4s ease, color 0.3s ease;
+    will-change: transform;
 }
 
 .endContainer .endButton.endRetry:hover i{
-  transform: translateX(5px) scale(1);
+    transform: translateX(5px) scale(1);
+}
+
+@media only screen and (max-width: 768px) {
+    .endContainer .endHeader h2{
+        font-size: 40px;
+    }
+
+    .endContainer .endStats h3{
+        font-size: 25px;
+    }
+
+    .endContainer .endStats p{
+        font-size:13px;
+    }
+
+    .endContainer .endButton {
+        font-size: 20px;
+        padding: 8px 15px;
+    }
+
+    .endContainer .endButton.endRetry i{
+        margin: 4px 0 0 3px;
+        font-size: 20px;
+        color: var(--accentcolor);
+        display:flex;
+        align-items:center;
+        text-shadow: 0 2px 3px var(--shadowcolor);
+        transform: translateX(0) scale(0.9);
+        transition: transform 0.4s ease, color 0.3s ease;
+        will-change: transform;
+    }
 }
