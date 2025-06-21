@@ -5,9 +5,9 @@ import logoDark from '../../assets/logo_dark.png'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 
 //sound effects
-import selectSFX from '../../soundeffect/select.ogg'
+import openSFX from '../../soundeffect/howplayopen.ogg'
 import startSFX from '../../soundeffect/start.ogg'
-import clickSFX from '../../soundeffect/keyclick.wav'
+import clickSFX from '../../soundeffect/hover.ogg'
 import {playAudio} from '../../utils/soundPlayer'
 
 export default function HomeScreen({setGameState, lightmode, difficulty, setDifficulty}) {
@@ -29,7 +29,7 @@ export default function HomeScreen({setGameState, lightmode, difficulty, setDiff
 
     const handleHowToPlay = () => {
         //play audio
-        playAudio(selectSFX);
+        playAudio(openSFX);
     }
     
     return (

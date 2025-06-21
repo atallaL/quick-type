@@ -11,7 +11,7 @@ import {playAudio} from '../../utils/soundPlayer'
 export default function EndScreen({setGameState, stats}) {
 
     //choose a random word from this list to display
-    const endWordList = ['great job!', 'incredible!', 'well done!', 'impressive!', 'amazing!', 'fantastic!', 'super!', 'awesome!', 'unreal!', 'good stuff!', 'nailed it!', 'awesome sauce!', 'mindblowing!', 'so quick!']
+    const endWordList = ['great job!', 'incredible!', 'well done!', 'impressive!', 'amazing!', 'fantastic!', 'super!', 'awesome!', 'unreal!', 'good stuff!', 'nailed it!', 'mindblowing!', 'so quick!']
     const [endWord, setEndWord] = useState('');
     useEffect(() => {
         setEndWord(endWordList[Math.floor(Math.random() * endWordList.length)]);

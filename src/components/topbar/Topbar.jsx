@@ -2,20 +2,16 @@ import './Topbar.css'
 
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
-import clickSFX from '../../soundeffect/topbar.ogg'
-import {playAudio} from '../../utils/soundPlayer'
 
 export default function Topbar({lightmode, switchMode, audioEnabled, toggleAudio}) {
     
     //handle mode switch
     const handleModeSwitch = () => {
         switchMode()
-        playAudio(clickSFX);
     }
 
     //handle audio toggle
     const handleAudioToggle = () => {
-        playAudio(clickSFX);
         toggleAudio()
     }
 

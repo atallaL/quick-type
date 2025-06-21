@@ -161,6 +161,10 @@
         font-size: 13px;
     }
 
+    .gameContent .gameWordCount {
+        font-size: 17px;
+    }
+
     @keyframes textFloat {
         0% {transform: translateY(0);}
         50% {transform: translateY(-3px);}

@@ -85,11 +85,13 @@
 
 .endContainer .endButton.endHome p{
     color: var(--bgcolor);
+    text-shadow: 0 2px 2px var(--shadowcolor);
 }
 
 .endContainer .endButton.endHome{
     color: var(--bgcolor);
     background-color: var(--accentcolor);
+    box-shadow: 0 4px 4px var(--shadowcolor);
     border-radius: 5px;
     transform: scale(1);
     opacity: 1;
@@ -132,6 +134,8 @@
 .endContainer .endButton.endRetry:hover i{
     transform: translateX(5px) scale(1);
 }
+
+
 
 @media only screen and (max-width: 768px) {
     .endContainer .endHeader h2{

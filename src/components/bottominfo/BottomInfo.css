@@ -38,6 +38,7 @@
 
     .bottomInfoContainer{
         top:0;
+        bottom: auto;
     }
 
     .bottomInfoContainer .bottomInfoText{
