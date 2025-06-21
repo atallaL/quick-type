@@ -4,6 +4,8 @@ import {useState, useEffect, useRef} from 'react';
 
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
+import backHome from '../../soundeffect/backHome.ogg'
+import startSFX from '../../soundeffect/start.ogg'
 import {playAudio} from '../../utils/soundPlayer'
 
 export default function EndScreen({setGameState, stats}) {
@@ -17,12 +19,30 @@ export default function EndScreen({setGameState, stats}) {
 
     const endButtonsRef = useRef(null); //to make them uninteractable until thingy is done
 
-    //on start, remove animating class from thingy
+    //on start, do little sounds on thingy appearing and remove animating class from thingy
     useEffect(() => {
         setTimeout(() => {
             endButtonsRef.current.classList.remove('hiding');
         }, 2500);
+        setTimeout(() => {
+            endButtonsRef.current.classList.remove('hiding');
+        }, 2500);
+        setTimeout(() => {
+            endButtonsRef.current.classList.remove('hiding');
+        }, 2500);
     }, []);
+
+    //state switch handling
+    const handleHomeSwitch = () => {
+        playAudio(backHome);
+        setGameState('home');
+    }
+
+    const handleGameSwitch = () => {
+        playAudio(startSFX, 0.3);
+        setGameState('game');
+    }
+
 
     return (
         <div className="endContainer">
@@ -38,10 +58,10 @@ export default function EndScreen({setGameState, stats}) {
                 </div>
             </div>
             <div className="endButtons hiding" ref={endButtonsRef}>
-                <div className="endButton endHome" onClick={() => setGameState('home')}>
+                <div className="endButton endHome" onClick={handleHomeSwitch}>
                     <p>home</p>
                 </div>
-                <div className="endButton endRetry" onClick={() => setGameState('game')}>
+                <div className="endButton endRetry" onClick={handleGameSwitch}>
                     <p>retry</p>
                     <i className="bi bi-caret-right-fill"></i>
                 </div>

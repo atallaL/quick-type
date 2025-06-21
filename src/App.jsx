@@ -9,7 +9,8 @@ import GameScreen from './components/gamescreen/GameScreen'
 import EndScreen from './components/endscreen/EndScreen'
 import BottomInfo from './components/bottominfo/BottomInfo'
 
-import {enableAudio} from './utils/soundPlayer'
+import hover from './soundeffect/hover.ogg'
+import {enableAudio, playAudio} from './utils/soundPlayer'
 
 function App() {
 
@@ -41,6 +42,22 @@ function App() {
   useEffect(() => {
     enableAudio(audioEnabled);
   }, [audioEnabled]);
+
+  //when hovering things, play a sound
+  useEffect(() => {
+    const handleHoverSound = (e) => {
+      const target = e.target.closest('.clickable');
+      if (target) { //if hovering a clickable element
+        playAudio(hover, 0.2);
+      }
+    };
+
+    document.addEventListener('mouseover', handleHoverSound);
+
+    return () => {
+      document.removeEventListener('mouseover', handleHoverSound);
+    };
+  }, []);
 
   return (
     <>

@@ -22,7 +22,7 @@
     align-items: center;
     justify-content: center;
     opacity: 0;
-    animation: endFadeIn 3s ease forwards 1s;
+    animation: endFadeIn 2s ease forwards 1s;
 }
 
 .endContainer .endHeader h2{
@@ -59,7 +59,7 @@
     opacity: 0;
     margin-top:10vh;
     pointer-events: all;
-    animation: endFadeIn 3s ease forwards 2s;
+    animation: endFadeIn 2s ease forwards 2s;
 }
 
 .endContainer .endButtons.hiding {

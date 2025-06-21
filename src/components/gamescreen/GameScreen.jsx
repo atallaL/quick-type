@@ -3,6 +3,8 @@ import {useState, useEffect, useRef} from 'react';
 
 import typeCorrect from '../../soundeffect/typeCorrect.ogg'
 import typeIncorrect from '../../soundeffect/typeIncorrect.ogg'
+import wordComplete from '../../soundeffect/wordComplete.ogg'
+import died from '../../soundeffect/died.ogg'
 import {playAudio} from '../../utils/soundPlayer'
 
 export default function GameScreen({difficulty, setGameState, setStats}) {
@@ -62,10 +64,11 @@ export default function GameScreen({difficulty, setGameState, setStats}) {
 
         //if it matches, this input will be used
         setInputText(typed);
-        playAudio(typeCorrect); //play audio
+        playAudio(typeCorrect); //play audio unless the whole word is typed
 
         //if whole word has been typed, generate new word and reset input
         if(currWord === typed) {
+            playAudio(wordComplete, 0.3);
             setCurrWord(getRandomWord);
             setInputText('');
             setWordCount(prev => prev + 1);
@@ -116,6 +119,7 @@ export default function GameScreen({difficulty, setGameState, setStats}) {
 
             //if we go below time, do something
             if (percent <= 0) {
+                playAudio(died, 0.2);
                 clearInterval(interval);
                 setStats(gameStats);
                 setGameState('end');

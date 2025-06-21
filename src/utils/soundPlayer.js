@@ -6,11 +6,12 @@ export const enableAudio = (set) => {
   audioEnabled = set;
 };
 
-export const playAudio = (sound) => {
+export const playAudio = (sound, volume=1) => {
   if (!audioEnabled) {
     return;
   };
   
   const audio = new Audio(sound);
+  audio.volume = volume;
   audio.play();
 };

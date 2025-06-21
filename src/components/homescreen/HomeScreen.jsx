@@ -22,7 +22,7 @@ export default function HomeScreen({setGameState, lightmode, difficulty, setDiff
 
     const handleGameStateSwitch = () => {
         //play audio
-        playAudio(startSFX);
+        playAudio(startSFX, 0.3);
         setGameState('game');
     }
     
@@ -38,7 +38,7 @@ export default function HomeScreen({setGameState, lightmode, difficulty, setDiff
                         <i className="bi bi-caret-right-fill"></i>
                     </div>
                     <div className="homeHow">
-                        <p>how do i play?</p>
+                        <p className="">how do i play?</p>
                     </div>
                 </div>
             </div>
