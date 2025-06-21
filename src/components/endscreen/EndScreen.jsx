@@ -4,8 +4,6 @@ import {useState, useEffect, useRef} from 'react';
 
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
-import backHome from '../../soundeffect/backHome.ogg'
-import startSFX from '../../soundeffect/start.ogg'
 import {playAudio} from '../../utils/soundPlayer'
 
 export default function EndScreen({setGameState, stats}) {
@@ -34,12 +32,12 @@ export default function EndScreen({setGameState, stats}) {
 
     //state switch handling
     const handleHomeSwitch = () => {
-        playAudio(backHome, 0.4);
+        playAudio('back');
         setGameState('home');
     }
 
     const handleGameSwitch = () => {
-        playAudio(startSFX, 0.3);
+        playAudio('start');
         setGameState('game');
     }
 

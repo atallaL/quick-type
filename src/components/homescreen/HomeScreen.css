@@ -6,12 +6,25 @@
 }
 
 .mainContainer .homeContainer {
+  opacity: 0;
+  flex: 1;
   margin-top:25vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items:center;
   justify-content: space-between;
-  height:75vh;
+  animation: homeFadeIn 0.3s ease-in forwards;
+}
+
+@keyframes homeFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 .homeContainer .logoContainer{
@@ -189,4 +202,10 @@
         opacity: 0.6;
         transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
     }
+}
+
+@media only screen and (max-width: 576px) {
+  .mainContainer .homeContainer {
+    justify-content: space-between;
+  }
 }
