@@ -173,10 +173,11 @@
   left: 0;
   width: 100vw;
   height: 100dvh;
-  background-color: #000000da;
+  background-color: #00000098;
   z-index: 10;
   opacity: 0;
   animation: overlayFadeIn 0.3s ease forwards;
+  backdrop-filter: blur(1px)
 }
 
 @keyframes overlayFadeIn {
@@ -194,7 +195,7 @@
   align-items: center;
   color: var(--textcolor);
   background-color: var(--bgcolor2);
-  box-shadow: 0 5px 3px var(--shadowcolor);
+  box-shadow: 0 3px 3px var(--shadowcolor);
   width: 90%;
   height: 80%;
   max-height: 500px;
@@ -241,7 +242,8 @@
   height: 70px;
   background-color: var(--accentcolor);
   box-shadow: 0 5px 10px var(--shadowcolor);
-  color: var(--bgcolor2)
+  color: var(--bgcolor2);
+  transform: translateY(-5px);
 }
 
 .instructionHeader h3{
@@ -285,7 +287,7 @@
 
 .instructionExamples > p{
   color: var(--accentcolor);
-  text-shadow: 0 1px 1px var(--shadowcolor);
+  text-shadow: 0 2px 1px var(--shadowcolor);
   font-size: 20px;
 }
 
@@ -332,7 +334,7 @@
       transform: translateX(0);
   }
   3% {
-      transform: translateX(-2px);
+      transform: translateX(-1px);
   }
   9% {
       transform: translateX(2px);
@@ -350,6 +352,7 @@
 }
 
 .instructionOut {
+  opacity: 0.95;
   position: absolute;
   display: flex;
   align-items: center;
@@ -362,9 +365,8 @@
   border-radius: 15px;
   box-shadow: 0 4px 4px var(--shadowcolor);
   bottom: -16px;
-  opacity: 1;
   transform: scale(1);
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease;
   will-change: transform;
   cursor: pointer;
 }
@@ -378,16 +380,42 @@
 }
 
 .instructionOut:hover{
-  transform: scale(0.95);
+  transform: scale(0.97);
+  opacity: 1;
 }
 
-/* animations for examples */
+/* instruction closing animations n stuff */
 
-@keyframes incomplete {
+.instructionOverlay.closing {
+  animation: overlayFadeOut 0.3s ease;
+}
+
+@keyframes overlayFadeOut {
   0% {
-    opacity: 0.4
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
   }
 }
+
+.instructionContainer.closing {
+  animation: instructionsContract 0.3s ease;
+}
+
+@keyframes instructionsContract {
+  from {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+
+  to {
+    transform: scale(0.85) translateY(35px);
+    opacity: 0;
+  }
+}
+
 
 /* responsive */
 

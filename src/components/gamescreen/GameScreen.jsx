@@ -23,15 +23,20 @@ export default function GameScreen({difficulty, setGameState, setStats}) {
         wordStartTime:0,
         timeFirstInputSum: 0,
         firstInput:false,
-    })
+    });
 
+    //back to home button
+    const homeStateSwitch = () => {
+        playAudio('back');
+        setGameState('home');
+    }
 
     //get a random word
     const getRandomWord = () => {
         const wordList = wordLists[difficulty];
         //grab word from in there
         return wordList[Math.floor(Math.random() * wordList.length)];
-    }
+    };
 
     //handle user input and word completion
     const handleTyping = (e) => {
@@ -46,7 +51,7 @@ export default function GameScreen({difficulty, setGameState, setStats}) {
             setHasStarted(true);
             timeRef.current = Date.now();
             gameStatsRef.current.startTime = Date.now();
-        }
+        };
 
         //if incorrect letter typed
         if (!match) {
@@ -58,7 +63,7 @@ export default function GameScreen({difficulty, setGameState, setStats}) {
             setTimeout(() => setWrongInput(false), 150);
 
             return;
-        }
+        };
 
         //get the time between word showing up and first letter being typed, add it to sum
         if (!gameStatsRef.current.firstInput) {
@@ -66,8 +71,8 @@ export default function GameScreen({difficulty, setGameState, setStats}) {
                 const reactionTime = Date.now()-gameStatsRef.current.wordStartTime;
                 gameStatsRef.current.timeFirstInputSum = gameStatsRef.current.timeFirstInputSum + reactionTime;
                 gameStatsRef.current.firstInput = true;
-            }
-        }
+            };
+        };
 
         //if it matches, this input will be used
         setInputText(typed);
@@ -88,8 +93,8 @@ export default function GameScreen({difficulty, setGameState, setStats}) {
             //dont allow transition on timer for like a bit, reenable after
             setTimerReset(true);
             setTimeout(() => setTimerReset(false), 100);
-        }
-    }
+        };
+    };
 
     //first word
     useEffect(() => {
@@ -225,6 +230,7 @@ export default function GameScreen({difficulty, setGameState, setStats}) {
                 {/* display needed text */}
                 <div className="gameWordCountContainer">
                     <div className={`gameWordCount ${hasStarted ? '' : 'beforeStart'}`}>{hasStarted ? wordCount : 'press any key to start'}</div>
+                    {!hasStarted && <i class="bi bi-house-fill" onClick={() => homeStateSwitch()}></i>}
                 </div>
                 
                 <div className="gameTimerContainer">

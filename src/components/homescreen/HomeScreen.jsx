@@ -11,6 +11,7 @@ import {playAudio} from '../../utils/soundPlayer'
 
 export default function HomeScreen({setGameState, lightmode, difficulty, setDifficulty}) {
     const [displayInstructions, setDisplayInstructions] = useState(false); //how to play
+    const [instructionsClosing, setInstructionsClosing] = useState(false);
     
     //to allow playing sound and selecting level
     const handleDifficultySelection = (difficultyLevel) => {
@@ -35,7 +36,12 @@ export default function HomeScreen({setGameState, lightmode, difficulty, setDiff
     const handleHowToPlayClose = () => {
         //play audio
         playAudio('closehowplay');
-        setDisplayInstructions(false);
+        setInstructionsClosing(true);
+
+        setTimeout(() => {
+            setInstructionsClosing(false);
+            setDisplayInstructions(false);
+        }, 300)
     }
     
     return (
@@ -74,8 +80,8 @@ export default function HomeScreen({setGameState, lightmode, difficulty, setDiff
             </div>
             {/* popup for instruction on how to play */}
             {displayInstructions && 
-                <div className="instructionOverlay">
-                    <div className="instructionContainer">
+                <div className={`instructionOverlay ${instructionsClosing ? 'closing' : ''}`}>
+                    <div className={`instructionContainer ${instructionsClosing ? 'closing' : ''}`}>
                         <div className="instructionHeader">
                             <h3>how to play</h3>
                         </div>

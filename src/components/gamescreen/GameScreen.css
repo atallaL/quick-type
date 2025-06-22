@@ -135,6 +135,22 @@
     height: 30px;
     display:flex;
     align-items: flex-end;
+    justify-content: space-between;
+}
+
+.gameContent .gameWordCountContainer i{
+    color: var(--textcolor);
+    font-size: 20px;
+    opacity: 0.5;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    will-change: opacity, transform;
+    text-shadow: 0 3px 1px var(--shadowcolor);
+    cursor: pointer;
+}
+
+.gameContent .gameWordCountContainer i:hover{
+    opacity: 0.8;
+    transform: translateY(-2px) scale(1.08);
 }
 
 .gameContent .gameWordCount {
@@ -158,7 +174,6 @@
     50% {transform: translateY(-5px);}
     100% {transform: translateY(0);}
 }
-
 
 /* responsive */
 
