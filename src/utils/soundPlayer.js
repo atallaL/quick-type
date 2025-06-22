@@ -13,7 +13,7 @@ export const preloadAudio = (key, path, volume=1) => {
   const audio = new Audio(path);
   audio.volume=volume;
   audio.preload='auto'; //preload
-  cache.set(key, audio)
+  cache.set(key, {audio, volume})
 }
 
 export const playAudio = (key) => {
@@ -21,6 +21,8 @@ export const playAudio = (key) => {
     return;
   };
 
-  const audio = cache.get(key).cloneNode();
+  const {audio: ogAudio, volume} = cache.get(key); // grab audio, volume pair
+  const audio = ogAudio.cloneNode(); //clone audio so they can overlap
+  audio.volume = volume;
   audio.play();
 };

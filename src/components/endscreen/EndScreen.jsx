@@ -50,9 +50,9 @@ export default function EndScreen({setGameState, stats}) {
                 </div>
                 <div className="endStats">
                     <h3>stats:</h3>
-                    <p>total time elapsed: {stats.timeElapsed}s</p>
-                    <p>average reaction time: {stats.wordsCompleted === 0 ? 'N/A' : Math.floor(stats.timeFirstInputSum / (stats.wordsCompleted - 1)) + 'ms'}</p>
-                    <p>total words typed: {stats.wordsCompleted}</p>
+                    <p>time elapsed: {stats.timeElapsed}s</p>
+                    <p>words completed: {stats.wordsCompleted}</p>
+                    <p>reaction time: {stats.wordsCompleted === 0 || stats.wordsCompleted === 1 ? 'N/A' : Math.floor(stats.timeFirstInputSum / (stats.wordsCompleted - 1)) + 'ms'}</p>
                 </div>
             </div>
             <div className="endButtons hiding" ref={endButtonsRef}>

@@ -9,6 +9,7 @@ import GameScreen from './components/gamescreen/GameScreen'
 import EndScreen from './components/endscreen/EndScreen'
 import BottomInfo from './components/bottominfo/BottomInfo'
 
+//sounds to load
 import hover from './soundeffect/hover.mp3'
 import back from './soundeffect/backHome.mp3'
 import died from './soundeffect/died.mp3'
@@ -17,6 +18,7 @@ import start from './soundeffect/start.mp3'
 import correct from './soundeffect/typeCorrect.mp3'
 import incorrect from './soundeffect/typeIncorrect.mp3'
 import complete from './soundeffect/wordComplete.mp3'
+import closeHowPlay from './soundeffect/howplayclose.mp3'
 import {enableAudio, playAudio, preloadAudio} from './utils/soundPlayer'
 
 //check if we on mobile, for audio playing
@@ -31,9 +33,10 @@ function App() {
     preloadAudio('died', died, 0.2);
     preloadAudio('howplay', howPlay, 0.3);
     preloadAudio('start', start, 0.3);
-    preloadAudio('correct', correct);
+    preloadAudio('correct', correct, 0.5);
     preloadAudio('incorrect', incorrect, 0.5);
     preloadAudio('complete', complete, 0.3);
+    preloadAudio('closehowplay', closeHowPlay, 0.2);
   }, []);
 
   //states

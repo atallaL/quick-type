@@ -86,6 +86,7 @@
 .endContainer .endButton.endHome p{
     color: var(--bgcolor);
     text-shadow: 0 2px 2px var(--shadowcolor);
+    transition: color 0.5s ease;
 }
 
 .endContainer .endButton.endHome{
@@ -95,13 +96,14 @@
     border-radius: 5px;
     transform: scale(1);
     opacity: 1;
-    transition: transform 0.4s ease, opacity 0.4s ease, color 0.3s ease;
+    transition: transform 0.4s ease, opacity 0.4s ease, box-shadow 0.4s ease;
     will-change: transform;
 }
 
 .endContainer .endButton.endHome:hover{
-    transform: scale(0.95);
-    opacity: 0.7;
+    transform: scale(0.97);
+    box-shadow: 0 2px 2px var(--shadowcolor);
+    opacity: 0.8;
 }
 
 .endContainer .endButton.endRetry{
