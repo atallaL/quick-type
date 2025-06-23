@@ -41,7 +41,7 @@ export default function GameScreen({difficulty, setGameState, setStats}) {
     //handle user input and word completion
     const handleTyping = (e) => {
         //grab input value
-        const typed = e.target.value;
+        const typed = e.target.value.toLowerCase();
 
         //check if the word is correct so far
         const match = currWord.startsWith(typed);
